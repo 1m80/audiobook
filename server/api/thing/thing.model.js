@@ -11,9 +11,14 @@ var BookSchema = new Schema({
   audio: Boolean,
   content: Boolean,
   cover: Boolean,
-  upload: Boolean,
-  matter: String,
-  repair: Boolean
+  upload: {type: Boolean, default:false},
+  matter: {type:String, default: ''},
+  repair: {type: Boolean, default: false},
+  type: String
 });
+
+BookSchema.statics.findByLang = function(lang, callback) {
+  return this.model('audiobook').find({type: lang}, callback);
+}
 
 module.exports = mongoose.model('audiobook', BookSchema);

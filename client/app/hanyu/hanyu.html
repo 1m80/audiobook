@@ -1,0 +1,64 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="row">
+  
+  <div class="panel panel-defaul">
+    <ul class="list-group" id="book-list">
+      <li class="list-group-item">
+        <ul class="list-group">
+          <li class="col-md-1">编辑</li>
+          <li class="col-md-1">日期</li>
+          <li class="col-md-1">Appid</li>
+          <li class="col-md-1">书名</li>
+          <li class="col-md-2">分类</li>
+          <li class="col-md-1 tt-chk">音频</li>
+          <li class="col-md-1 tt-chk">正文</li>
+          <li class="col-md-1 tt-chk">封面</li>
+          <li class="col-md-1">问题</li>
+          <li class="col-md-1 tt-chk">问题已修正</li>
+          <li class="col-md-1 tt-chk">上传</li>
+        </ul>
+      </li>
+      <li class="list-group-item" ng-repeat="book in books" style="height:50px">
+        <ul class="books" ez-book>
+          <li class="col-md-1">
+            <button class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></button>
+            <button class="btn btn-success" style="display:none;"><span class="glyphicon glyphicon-ok"></span></button>
+          </li>
+          <input type="text" disabled="" value="{{book.date}}" ng-mouseleave="hh()" class="col-md-1"/>
+          <input type="text" disabled="" value="{{book.appid}}" class="col-md-1"/>
+          <input type="text" disabled="" value="{{book.name}}" class="col-md-1"/>
+          <input type="text" disabled="" value="{{book.classify}}" class="col-md-2"/>
+          <input type="checkbox" disabled="" class="col-md-1"/>
+          <input type="checkbox" disabled="" class="col-md-1"/>
+          
+          <input type="checkbox" disabled="" class="col-md-1" />
+          <input type="text" disabled="" value="{{book.matter}}" class="col-md-1"/>
+          <input type="checkbox" disabled="" class="col-md-1"/>
+          <input type="checkbox" disabled="" class="col-md-1"/>
+        </ul>
+      </li>
+    </ul>
+    <paging>
+      <ul class="pagination" num-pages="task.pageCount" current-page="task.currentPage" on-select-page="selectPage(page)">
+        <li ng-class="{disabled: noPrevious()}"> <a ng-click="selectPrevious()">&laquo;</a>
+
+        </li>
+        <li ng-repeat="page in pages" ng-class="{active: isActive(page)}"> <a ng-click="selectPage(page)">{{page}}</a>
+
+        </li>
+        <li ng-class="{disabled: noNext()}"> <a ng-click="selectNext()">&raquo;</a>
+
+        </li>
+      </ul>
+    </paging>
+  </div> 
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Angular Fullstack v2.0.13 |
+        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+  </div>
+</footer>

@@ -3,11 +3,9 @@
 
 
 angular.module('tianshanyunApp')
-  .factory('bookService', ['$http', function ($http) {
+  .factory('bookService', ['$http','$rootScope', function ($http, $rootScope) {
     // Service logic
     // ...
-
-    var meaningOfLife = 42;
 
     // Public API here
     return {
@@ -16,6 +14,9 @@ angular.module('tianshanyunApp')
       },
       updateBook: function(book) {
         $http.put('/api/things/'+book._id, book);
+      },
+      newAppid: function(){
+        console.log($rootScope);
       }
     };
 }]);

@@ -1,3 +1,5 @@
 # audiobook
 
-a practice by angular/nodejs/mongodb
+##client
+###pagination
+[AngularJs分页pagination directive](http://www.sheng00.com/1051.html)

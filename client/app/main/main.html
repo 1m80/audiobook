@@ -1,50 +1,53 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="row">
-  <div class="panel panel-defaul">
-    <ul class="list-group" id="book-list">
-      <li class="list-group-item">
-        <ul class="list-group">
-          <li class="col-md-1">编辑</li>
-          <li class="col-md-1">日期</li>
-          <li class="col-md-1">Appid</li>
-          <li class="col-md-1">书名</li>
-          <li class="col-md-1">分类</li>
-          <li class="col-md-1">音频</li>
-          <li class="col-md-1">正文</li>
-          <li class="col-md-1">封面</li>
-          <li class="col-md-1">上传</li>
-          <li class="col-md-1">问题</li>
-          <li class="col-md-1">问题已修正</li> 
-        </ul>
-      </li>
-      <li class="list-group-item" ng-repeat="book in books" style="height:50px">
-        <ul class="books" ez-book>
-          <li class="col-md-1">
-            <button class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></button>
-            <button class="btn btn-success" style="display:none;"><span class="glyphicon glyphicon-ok"></span></button>
-          </li>
-          <input type="text" disabled="" value="{{book.date}}"/>
-          <input type="text" disabled="" value="{{book.appid}}"/>
-          <input type="text" disabled="" value="{{book.name}}"/>
-          <input type="text" disabled="" value="{{book.classify}}"/>
-          <input type="checkbox" disabled="" />
-          <input type="checkbox" disabled="" />
-          <input type="checkbox" disabled="" />
-          <input type="checkbox" disabled="" />
-          <input type="text" disabled="" value="{{book.matter}}"/>
-          <input type="checkbox" disabled="" />
-        </ul>
-      </li>
-    </ul>
-  </div> 
-    <button id="btn-add" class="btn btn-primary btn-lg" ac-add><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add</button>
-    <button id="btn-sure" class="btn btn-success btn-lg"  style="display:none" ac-sure><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
- 
-</div>
-<input type="input" value="dafsdf" ng-model="nimei" />
-<p>{{nimei}}</p>
+<div class="container-fluid">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <th>日期</th>
+        <th>Appid</th>
+        <th>书名</th>
+        <th>语言</th>
+        <th>分类</th>
+        <th>音频</th>
+        <th>正文</th>
+        <th>封面</th>
+        <th>问题</th>
+        <th>问题已修正</th>
+        <th>上传</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="book in books">
+          <td>{{book.date}}</td>
+          <td>{{book.appid}}</td>
+          <td>{{book.name}}</td>
+          <td>{{book.type}}</td>
+          <td>{{book.classify}}</td>
+          <td>{{book.audio}}</td>
+          <td>{{book.content}}</td>
+          <td>{{book.cover}}</td>
+          <td>{{book.matter}}</td>
+          <td>{{book.repair}}</td>
+          <td>{{book.upload}}</td>
+          
+      </tbody>
+    </table>
+   
+    <paging>
+      <ul class="pagination" num-pages="task.pageCount" current-page="task.currentPage" on-select-page="selectPage(page)">
+        <li ng-class="{disabled: noPrevious()}"> <a ng-click="selectPrevious()">&laquo;</a>
 
+        </li>
+        <li ng-repeat="page in pages" ng-class="{active: isActive(page)}"> <a ng-click="selectPage(page)">{{page}}</a>
+
+        </li>
+        <li ng-class="{disabled: noNext()}"> <a ng-click="selectNext()">&raquo;</a>
+
+        </li>
+      </ul>
+    </paging>
+  </div> 
+</div>
 <footer class="footer">
   <div class="container">
       <p>Angular Fullstack v2.0.13 |
@@ -52,3 +55,23 @@
          <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
   </div>
 </footer>
+<script>
+/*
+  $(function(){
+
+  //分页功能
+  var page=$('#page1');
+  var options = {
+    currentPage:page.attr('pageNum'),
+    totalPages:page.attr('pageCount'),
+    numberOfPages:page.attr('numberOfPages'),
+    pageUrl: function(type, page, current){
+      return '/main/'+page;
+    },
+    bootstrapMajorVersion:3
+    }
+  alert(options.currentPage);
+  $('#page1').bootstrapPaginator(options);
+  })
+*/
+</script>

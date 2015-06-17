@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tianshanyunApp')
-  .controller('WeiyuCtrl', function ($http, $scope, $routeParams) {
+  .controller('HanyuCtrl', function ($http, $scope, $routeParams) {
   	if ($routeParams.page) {
         $scope.currentPage = $routeParams.page;
       }
@@ -11,14 +11,14 @@ angular.module('tianshanyunApp')
     $scope.pages = [];
 
 
-    $http.get('/api/things/lang/weiyu/'+$routeParams.page).success(function(response) {
+    $http.get('/api/things/lang/hanyu/'+$routeParams.page).success(function(response) {
         $scope.books = response.books;
         $scope.numPages = response.page.pageCount;
       });
 
 
     $scope.onSelectPage = function(page) {
-      $http.get('/api/things/lang/weiyu/'+page).success(function(response) {
+      $http.get('/api/things/lang/hanyu/'+page).success(function(response) {
         $scope.books = response.books;
         $scope.numPages = response.page.pageCount;
         

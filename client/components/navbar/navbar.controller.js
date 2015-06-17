@@ -8,13 +8,13 @@ angular.module('tianshanyunApp')
       'link' : '/'
     },{
       'title': '汉语',
-      'link': '/hanyu'
+      'link': '/hanyu/1'
     },{
       'title': '哈语',
-      'link': '/hayu'
+      'link': '/hayu/1'
     },{
       'title': '维语',
-      'link': '/weiyu'
+      'link': '/weiyu/1'
     }];
 
     $scope.isCollapsed = true;
